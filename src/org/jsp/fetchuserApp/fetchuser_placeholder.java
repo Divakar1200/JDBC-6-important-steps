@@ -100,38 +100,38 @@ public class fetchuser_placeholder
 		}
 		
 	}
-	
+}
 /* JDBC---------------------------------------------------------------------------
- * Java Database connectivity is a specification(rules) which is given in the form of Abstraction API to achieve loose coupling between Java Application 
+ * Java Database connectivity is a specification(rules) that is given in the form of Abstraction API to achieve loose coupling between Java Application 
  * and Database Server.
  * 
  * Standard Steps of JDBC ----
  * 1- Load and Register Driver class
- * 2- Establish a connection between Java application and Database server
+ * 2- Establish a connection between the Java application and the Database server
  * 3- Create a Statement or Platform
  * 4- Execute the SQL Query or Statement
  * 5- Process the resultant data (only mandatory for DQL statement)
- * 6- CLose all costly resources
+ * 6- Close all costly resources
  * 
  * 
  ****Step-1***** Load and Register Driver class--------------------------------
  * 
- * In this step we need to load and register the Driver classes which is a part of JDBC driver, which are provided by the respective database server or vendor.
+ * In this step we need to load and register the Driver classes which are a part of the JDBC driver and are provided by the respective database server or vendor.
  * 
- * There are Two different ways through which we can load and register Driver classes____
+ * There are two different ways through which we can load and register Driver classes____
  * (1) Manually ======== 
- *         -In this case we need to create an object of Driver class and then we should be register Driver class with 'DriverManager' by using a 
+ *         -In this case, we need to create an object of the Driver class and then we should register the Driver class with 'DriverManager' by using a 
  *          static method called registerDriver().
  * 
  *               Example/Syntax - Driver d= new Driver();
  *                                DriverManager.registerDriver(d);
  * 
- *         -The manual way of loading and registering the Driver class is not a good practice. Since it causes tight-coupling between java application and 
+ *         -The manual way of loading and registering the Driver class is not a good practice. Since it causes tight coupling between java applications and 
  *          database server
  *          
  * (2) By using a Static method called forName() ========
  *         -forName() method is declared inside a class called 'Class' itself, and it is present inside Java.lang package.
- *         -when ever we try to use this method it throw an exception called 'ClassNotFoundException'.
+ *         -whenever we try to use this method it throws an exception called 'ClassNotFoundException'.
  *              
  *               Example/Syntax - public class Test{
  *                                   public static void main(String[] args){
@@ -146,12 +146,12 @@ public class fetchuser_placeholder
  *                                }  
  *                                
  * 
- ****Step-2***** Establish a connection between Java application and Database server---------------------------------------
+ ****Step-2***** Establish a connection between the Java application and the Database server---------------------------------------
  *
- * In this step we need to establish a connection between Java application and Database server by using Connection Interface, which is provided by JDBC API.
+ * In this step we need to establish a connection between the Java application and the Database server by using Connection Interface, which is provided by JDBC API.
  * 
  *     getConnection()---
- *          - It is a static Factory/Helper method which is used to create and return implementation object of Connection interface based on "URL".
+ *          - It is a static Factory/Helper method that is used to create and return the implementation object of the Connection interface based on "URL".
  *          - The return type of getConnection() method is Connection interface.
  *          
  *               Example/Syntax - Connection con = DriverManager.getConnection("URL");
@@ -172,21 +172,21 @@ public class fetchuser_placeholder
  * 
  * There are 3 different ways in which we can create a Statement or a Platform____ 
  * (1) Statement=======
- *           - java.sql.Statement is an interface which is the part of JDBC API and the implementation is provided the respective database 
- *             server or vender as a part of JDBC Driver.
+ *           - java.sql.Statement is an interface that is part of JDBC API and the implementation is provided by the respective database 
+ *             server or vendor as a part of JDBC Driver.
  *           
  *             Example/Syntax - Statement stmt= con.createStatement();
  *                              stmt.executeUpdate(qry);   //Compile + Execute
  *             
  *      createStatement()---
- *           - It is a non-static Factory/Helper method which is used to create and return an implementation object of Statement interface.
+ *           - It is a non-static Factory/Helper method that is used to create and return an implementation object of the Statement interface.
  *           - Hence the return type of createStatment() method is Statement interface.
  *           
  * (2) PreparedStatement======
- *           - PreparedStatement is an interface which is a part of JDBC API and the implementation is provided by the respective Database server/vendor.
- *           - preparedStatement is the sub-interface of Statement interface.
- *           - preparedStatement support the concept of 'placeholder' which means it can accept input from the user at runtime.
- *           - preparedStatement interface support the concept of Compile once and execute many times(execution plan).
+ *           - PreparedStatement is an interface that is a part of JDBC API and the implementation is provided by the respective Database server/vendor.
+ *           - preparedStatement is the sub-interface of the Statement interface.
+ *           - preparedStatement supports the concept of 'placeholder' which means it can accept input from the user at runtime.
+ *           - preparedStatement interface supports the concept of compiling once and executing many times(execution plan).
  *           - placeholder is supported by PreparedStatement and CollableStatement only, but not by Statement.
  *           
  *             Example/Syntax - PreparedStatement pstmt= con.preparedStatement(qry);
@@ -197,16 +197,16 @@ public class fetchuser_placeholder
  * 
  ****Step-4***** Execute the SQL Query or Statement ---------------------------------------
  *
- * To Execute different type of SQL queries/ SQL Statement there are 3 different types of method are available, which are as following___
+ * To Execute different types of SQL queries/ SQL Statement there are 3 different types of methods are available, which are as follows___
  * (1) execute()=======
- *           - execute() method is a generic method which is used to execute any type of SQL Queries or SQL Statements(DDL,DML,DQL). 
+ *           - execute() method is a generic method that is used to execute any type of SQL query or SQL Statement (DDL, DML, DQL). 
  *           
  *             Example/Syntax -  + boolean execute("Generic SQL Query - DDL/DML/DQL")
  *                                        for DQL = true
  *                                        for DDL/DML = false
  *                      
  *           - The return type for execute() method is Boolean.
- *           - Execute method return boolean true in case of DQL and boolean false in case of DDL/DML.
+ *           - Execute method returns boolean true in case of DQL and boolean false in case of DDL/DML.
  *           
  * (2) executeUpdate()   //for DML
  *           - executeUpdate() method is a specialized method which is used to execute only DML Queries
@@ -214,14 +214,14 @@ public class fetchuser_placeholder
  *             Example/Syntax -  + int executeUpdate("only DML")
  *             
  *           - The return type of executeUpdate() method is integer because the outcome of DML is 0 to n integer value 
- *             which gives the total number of record affected in the Database Server.
+ *             which gives the total number of records affected in the Database Server.
  *           - Whenever we try to execute DDL/DQL queries through executeUpdate() method then throws an exception called 'SQLException'
  *             which is a Checked Exception.
  *             
  * (3) executeQuery()    //for DQL
- *           - This method is a specialized method which is used to execute only DQL queries/statements
+ *           - This method is a specialized method that is used to execute only DQL queries/statements
  *           - The outcome of DQL queries is the processed/Resultant data which is stored in the cursor or Buffer memory, which is stored
- *             in the Cursor/Buffer memory, which can be fetched by using result set interface. Hence, the return type of executeQuery()
+ *             in the Cursor/Buffer memory, which can be fetched by using the result set interface. Hence, the return type of executeQuery()
  *             method is ResultSet interface.
  *             
  *             Example/Syntax - + ResultSet executeQuery("only DQL")
@@ -229,14 +229,14 @@ public class fetchuser_placeholder
  *           - Whenever we try to execute DML/DDL queries through executeUpdate() method then throws an exception called 'SQLException'
  *             which is a Checked Exception.
  * 
- * All 3 methods are basically declared in Statement interface. 
+ * All 3 methods are declared in the Statement interface. 
  *
  * 
  ****Step-5***** Process the resultant data -----------------------------------------------
  * 
- * We can process the resultant data using ResultSet interface
+ * We can process the resultant data using the ResultSet interface
  *   
- *         java.sql.ResultSet - It is a interface which is a part of JDBC API and the implementation is provided by the respective Database server/vendor
+ *         java.sql.ResultSet - It is an interface that is a part of JDBC API and the implementation is provided by the respective Database server/vendor
  *                              as a part of JDBC Driver in the form of jar file as Driver.jar.
  *                            - By default result set interface doesn't point to any record in the cursor/buffer memory. 
  *                            
@@ -255,27 +255,27 @@ public class fetchuser_placeholder
  *                                               + String getString("name");
  *                                               
  *                              (2) next() - This method is used to check whether the record is present in the cursor/buffer memory or not.
- *                                         - The return type of next() method is boolean 'true' if the record is present else it will return false,
+ *                                         - The return type of the next() method is boolean 'true' if the record is present else it will return false,
  *                                           but Not the Record.
- *                                         - next() method can be used when ever there are minimum number of records present in cursor/buffer memory.
+ *                                         - The next() method can be used whenever there is a minimum number of records present in cursor/buffer memory.
  *                                         
  *                                                    Syntax - + Boolean next()
  *                                         
- *                              (3) absolute() - This method is used to check weather a particular record is present in the cursor/buffer memory or not,
- *                                               based on a parameter called 'integer row number' and it return a Boolean value 'true' or 'false'
+ *                              (3) absolute() - This method is used to check whether a particular record is present in the cursor/buffer memory or not,
+ *                                               based on a parameter called 'integer row number' and it returns a Boolean value 'true' or 'false'
  *                                               but not record.
- *                                             - It directly start from the given number by the user but, not from zeroth record area.
+ *                                             - It directly starts from the given number by the user but, not from the zeroth record area.
  *                                          
  *                                                     Syntax - + Boolean absolute(int rownumber)
  *                                         
- *                                             - absolute() method can be used when ever there are n number of records present in cursor/buffer memory.
+ *                                             - absolute() method can be used whenever there is n number of records present in cursor/buffer memory.
  *  
  *  
  ****Step-6***** CLose all costly resources -------------------------------------------
  * 
- *  The resources which makes use of system properties in the fprm of Stream is known as Costly Resources.
+ *  The resources that make use of system properties in the form of Stream is known as Costly Resources.
  *  
- *  We have to close all costly resources inside finally block using if condition to avoid 'NullPointerException'.
+ *  We have to close all costly resources inside finally block using the if condition to avoid 'NullPointerException'.
  *                 Example/Syntax - finally {
  *                                       if(rs!=null) {   //rs is the reference variable of costly resource
  *                                           try { 
@@ -286,5 +286,3 @@ public class fetchuser_placeholder
  *                                            } 
  *                                   }      
  * */
-
-}
